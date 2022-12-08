@@ -11,8 +11,6 @@ public class Spiel_Demo {
     static Integer tries = 0;
 
 
-
-
     public static void main(String[] args) {
 
         // Die nächste Zeile nachher auskommentieren, sonst ist es ja kein Raten mehr.. :D
