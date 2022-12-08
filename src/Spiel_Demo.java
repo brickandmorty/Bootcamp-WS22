@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -11,6 +13,7 @@ public class Spiel_Demo {
 
     static Integer myNumber = ThreadLocalRandom.current().nextInt(0, 100 + 1);
     static Integer tries = 0;
+    static JLabel text = new JLabel("Gebe eine Zahl zwischen 0 und 100 ein!"   );
 
 
     public static void main(String[] args) {
@@ -30,6 +33,29 @@ public class Spiel_Demo {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setDefaultLookAndFeelDecorated(true);
 
+        JLabel text = new JLabel("Gebe eine Zahl zwischen 0 und 100 ein!"   );
+        text.setBounds(50,50,300,30);
+
+
+        JTextField einzigesTextField = new JTextField();
+        einzigesTextField.setBounds(50,100,200,30);
+
+        JButton button = new JButton("Raten Sie!");
+        button.setBounds(50,150,200,30);
+
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String textFromEinzigesTextfield = einzigesTextField.getText();
+                Integer userNumber = Integer.parseInt(textFromEinzigesTextfield);
+                guess(userNumber);
+            }
+        });
+
+        frame.add(text);
+        frame.add(einzigesTextField);
+        frame.add(button);
+        frame.setLayout(null);
         frame.setVisible(true);
     }
 
@@ -51,6 +77,7 @@ public class Spiel_Demo {
             System.out.println("Du hast " + tries + " Versuche gebraucht.");
         } else {
             System.out.println("Leider falsch geraten! :-( Try again..");
+            text.setText("Falsch geraten!");
         }
 
         if (userNumber < myNumber){
@@ -61,6 +88,6 @@ public class Spiel_Demo {
         else {
             System.out.println("Deine Zahl ist zu groß.");
         }
-        nextRound();
+        // nextRound();
     }
 }
