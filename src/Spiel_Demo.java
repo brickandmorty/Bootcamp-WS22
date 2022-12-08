@@ -1,5 +1,7 @@
+import javax.swing.*;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
+
 
 // nextInt is normally exclusive of the top value,
 // so add 1 to make it inclusive
@@ -13,10 +15,22 @@ public class Spiel_Demo {
 
     public static void main(String[] args) {
 
-        // Die nächste Zeile nachher auskommentieren, sonst ist es ja kein Raten mehr.. :D
-        System.out.println("The number is: " + myNumber);
+        openUI();
 
-        nextRound();
+        // Die nächste Zeile nachher auskommentieren, sonst ist es ja kein Raten mehr.. :D
+        //System.out.println("The number is: " + myNumber);
+
+        //nextRound();
+    }
+
+    public static void openUI(){
+        JFrame frame = new JFrame("Rate die Zahl!");
+        frame.setSize(400, 300);
+        frame.setLocation(100,150);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultLookAndFeelDecorated(true);
+
+        frame.setVisible(true);
     }
 
     public static void nextRound() {
